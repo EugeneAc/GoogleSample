@@ -57,8 +57,8 @@
       function initClient() {
         window.gapi.auth.authorize(
         {
-            'client_id': "Put Client ID Here",
-            'scope': scopeApi,
+            'client_id': clientId,
+            'scope': scopes,
             'immediate': false
         },
         handlePhotoApiAuthResult);
