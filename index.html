@@ -47,7 +47,7 @@
       // Enter one or more authorization scopes. Refer to the documentation for
       // the API or https://developers.google.com/people/v1/how-tos/authorizing
       // for details.
-      var scopes = 'profile';
+      var scopes = ['https://www.googleapis.com/auth/photoslibrary', 'https://www.googleapis.com/auth/photoslibrary.readonly', 'https://www.googleapis.com/auth/photoslibrary.readonly.appcreateddata'];;
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
       function handleClientLoad() {
@@ -59,7 +59,7 @@
             apiKey: apiKey,
             discoveryDocs: discoveryDocs,
             clientId: clientId,
-            scope: scopeApi
+            scope: scope
         }).then(function () {
           // Listen for sign-in state changes.
           gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
