@@ -59,7 +59,7 @@
             apiKey: apiKey,
             discoveryDocs: discoveryDocs,
             clientId: clientId,
-            scope: scopes
+            scope: scopeApi
         }).then(function () {
           // Listen for sign-in state changes.
           gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
