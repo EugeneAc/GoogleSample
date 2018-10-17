@@ -64,7 +64,7 @@
           if (authResult && !authResult.error) {
         oauthToken = authResult.access_token;
 
-               GetAllPhotoGoogleApi();
+               makeApiCall();
 			   authorizeButton.onclick = handleAuthClick;
           signoutButton.onclick = handleSignoutClick;
     }
