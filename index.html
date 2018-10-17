@@ -38,7 +38,7 @@
       // Enter the API Discovery Docs that describes the APIs you want to
       // access. In this example, we are accessing the People API, so we load
       // Discovery Doc found here: https://developers.google.com/people/api/rest/
-      var discoveryDocs = ["https://www.googleapis.com/discovery/v1/apis/photo/v1/rest"];
+      var discoveryDocs = ['https://www.googleapis.com/discovery/v1/apis/photos/v1/rest'];
       // Enter a client ID for a web application from the Google API Console:
       //   https://console.developers.google.com/apis/credentials?project=_
       // In your API Console project, add a JavaScript origin that corresponds
@@ -55,20 +55,18 @@
         gapi.load('client:auth2', initClient);
       }
       function initClient() {
-        window.gapi.auth.authorize(
-        {
-            'client_id': clientId,
-            'scope': scopes,
-            'immediate': false
+        gapi.client.init({
+            apiKey: apiKey,
+            discoveryDocs: discoveryDocs,
+            clientId: clientId,
+            scope: scopes
         }).then(function () {
-          if (authResult && !authResult.error) {
-        oauthToken = authResult.access_token;
-
-               GetAllPhotoGoogleApi();
-			   authorizeButton.onclick = handleAuthClick;
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = handleAuthClick;
           signoutButton.onclick = handleSignoutClick;
-    }
-          
         });
       }
       function updateSigninStatus(isSignedIn) {
