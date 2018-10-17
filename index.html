@@ -60,8 +60,7 @@
             'client_id': clientId,
             'scope': scopes,
             'immediate': false
-        },
-        handlePhotoApiAuthResult);
+        });
         }).then(function () {
           if (authResult && !authResult.error) {
         oauthToken = authResult.access_token;
